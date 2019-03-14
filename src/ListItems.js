@@ -13,6 +13,7 @@ class ListItems extends Component {
                             id={index}
                             text={item} 
                             onRemoveItem={this.props.onRemoveItem} 
+                            onEditItem={this.props.onEditItem} 
                         />
                     )
                 })}

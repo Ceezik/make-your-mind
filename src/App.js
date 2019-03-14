@@ -21,6 +21,12 @@ class App extends Component {
     this.setState({ items: newItems })
   } 
 
+  editItem = (text, id) => {
+    let newItems = this.state.items.slice()
+    newItems[id] = text
+    this.setState({ items: newItems })
+  }
+
   render() {
     return (
       <div className="container">
@@ -30,7 +36,11 @@ class App extends Component {
         <Form addItem={this.addItem} />
         <ButtonChoose />
 
-        <ListItems items={this.state.items} onRemoveItem={this.removeItem} />
+        <ListItems 
+          items={this.state.items} 
+          onRemoveItem={this.removeItem}
+          onEditItem={this.editItem}  
+        />
       </div>
     );
   }
