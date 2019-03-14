@@ -48,7 +48,6 @@ input[type="text"] {
 }
 
 input[type="text"]:focus {
-  width: 250px;
   box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
   -moz-box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
   -webkit-box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
@@ -73,8 +72,12 @@ input:focus, button:focus {
   color : #3498db;
 }
 
+.error {
+  color: #e74c3c;
+}
 
-/* Button choose */
+
+/*Button choose*/
 
 .choose {
   margin-top : 2vh;
@@ -86,4 +89,15 @@ input:focus, button:focus {
   font-weight: 700;
   text-transform: uppercase;
   border-radius: 5px;
+}
+
+
+/*List*/
+
+ul {
+  padding-left: 0;
+}
+
+li {
+  list-style: none;
 }

@@ -4,16 +4,26 @@ import ButtonChoose from './ButtonChoose';
 import ListItems from './ListItems';
 
 class App extends Component {
+
+  state = {
+    items: ['item 1', 'item 2']
+  }
+
+  //Add an item in the list of items
+  addItem = (text) => {
+    this.setState({ items: [...this.state.items, text] });
+  }
+
   render() {
     return (
       <div className="container">
         <h1>Make your mind !</h1>
         <legend>You can't make a choice ? Let hazard do it</legend>
 
-        <Form />
+        <Form addItem={this.addItem} />
         <ButtonChoose />
 
-        <ListItems />
+        <ListItems items={this.state.items}/>
       </div>
     );
   }
