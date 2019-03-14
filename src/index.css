@@ -4,6 +4,10 @@ body {
   font-family: 'Montserrat', sans-serif;
 }
 
+i:hover {
+  cursor: pointer;
+}
+
 /*Title*/
 
 .container {
@@ -68,7 +72,6 @@ input:focus, button:focus {
 }
 
 .fa-plus:hover {
-  cursor: pointer;
   color : #3498db;
 }
 
@@ -96,8 +99,42 @@ input:focus, button:focus {
 
 ul {
   padding-left: 0;
+  display: flex;
+  display: -ms-flex;
+  display: -moz-flex;
+  display: -webkit-flex;
+  justify-content: center;
+  align-items: center;
+  -moz-align-items: center;
+  -ms-align-items: center;
+  -webkit-align-items: center;
+  flex-direction: column;
+  -moz-flex-direction: column;
+  -ms-flex-direction: column;
+  -webkit-flex-direction: column;
 }
 
 li {
   list-style: none;
+  background-color: white;
+  width : 30%;
+  padding: 10px 20px;
+  margin-top: 10px;
+  border-radius: 5px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  -moz-box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  -webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
 }
+
+.left {
+  float: left;
+}
+
+.right {
+  float: right;
+}
+
+.fa-trash-alt {
+  color:#e74c3c;
+}
+

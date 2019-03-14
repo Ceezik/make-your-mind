@@ -8,7 +8,12 @@ class ListItems extends Component {
             <ul>
                 {this.props.items.map((item, index) => {
                     return (
-                        <Item key={index} text={item} />
+                        <Item 
+                            key={index}
+                            id={index}
+                            text={item} 
+                            onRemoveItem={this.props.onRemoveItem} 
+                        />
                     )
                 })}
             </ul>
