@@ -12,24 +12,30 @@ class Item extends Component {
         this.props.onRemoveItem(this.props.id)
     }
 
+    //Appeal to the function to edit an item
     editItem = () => {
         if(this.state.edited) {
-            this.props.onEditItem(this.state.text, this.props.id)
+            if(this.state.text) {
+                this.props.onEditItem(this.state.text, this.props.id)
+                this.setState({ edited: !this.state.edited })
+            }
         }
-        this.setState({ edited: !this.state.edited })
+        else 
+            this.setState({ edited: !this.state.edited })
     }
 
+    //Check the value of the input to add an item
     handleChange = (event) => {
         this.setState({text: event.target.value})
     }
 
     render() {
         return (
-            <li key={this.props.key}>
-                <span className="left">
-                    {this.state.edited ? <input type="text" value={this.state.text} onChange={this.handleChange} /> : this.props.text}
+            <li>
+                <span>
+                    {this.state.edited ? <input type="text" className="inputItem" value={this.state.text} onChange={this.handleChange} /> : this.props.text}
                 </span> 
-                <span className="right">
+                <span>
                     <i className={this.state.edited ? "fas fa-save" : "fas fa-pen"} onClick={this.editItem}></i>
                     <i className="fas fa-trash-alt" onClick={this.removeItem}></i>
                 </span> 

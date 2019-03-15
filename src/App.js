@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Form from './Form';
-import ButtonChoose from './ButtonChoose';
 import ListItems from './ListItems';
 
 class App extends Component {
@@ -21,6 +20,7 @@ class App extends Component {
     this.setState({ items: newItems })
   } 
 
+  //Edit an item
   editItem = (text, id) => {
     let newItems = this.state.items.slice()
     newItems[id] = text
@@ -30,11 +30,14 @@ class App extends Component {
   render() {
     return (
       <div className="container">
-        <h1>Make your mind !</h1>
-        <legend>You can't make a choice ? Let hazard do it</legend>
+        <h1>Make your mind</h1>
+        <legend>You can't make a choice ? Let hazard do it !</legend>
 
-        <Form addItem={this.addItem} />
-        <ButtonChoose />
+        <Form 
+          addItem={this.addItem} 
+          nbItems={this.state.items.length}
+        />
+        
 
         <ListItems 
           items={this.state.items} 

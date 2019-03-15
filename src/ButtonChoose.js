@@ -4,9 +4,11 @@ class ButtonChoose extends Component {
 
     render() {
         return (
-            <button className="choose">
-                Choose for me
-            </button>
+            <span>
+                <button className={this.props.nbItems > 1 ? "choose" : "choose disabled"}>
+                    Choose for me
+                </button>
+            </span>
         )
     }
 }
