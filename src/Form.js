@@ -6,7 +6,8 @@ class Form extends Component {
 
     state = {
         text: "",
-        error: ""
+        errorInputOption: false,
+        errorButtonChoose: false
     }
 
     //Put the input's text in the state
@@ -18,11 +19,11 @@ class Form extends Component {
     addItem = () => {
         if(this.state.text.length > 0) {
             this.props.addItem(this.state.text)
-            this.setState({ text: "", error: "" })
+            this.setState({text: "", errorInputOption: false})
         }
         else {
-            this.setState({ error: "Please enter an option !" })
-            setTimeout(() => this.setState({ error: "" }), 3000)
+            setTimeout(() => this.setState({ errorInputOption: false }), 3000)
+            this.setState({errorInputOption: true, errorButtonChoose: false})
         }
     }
 
@@ -34,8 +35,8 @@ class Form extends Component {
             //TODO : Choose randomly an item
         }
         else {
-            this.setState({ error: "You need to add some options !" })
-            setTimeout(() => this.setState({ error: "" }), 3000)
+            this.setState({ errorButtonChoose: true, errorInputOption: false })
+            setTimeout(() => this.setState({ errorButtonChoose: false }), 3000)
         }
             
     }
@@ -48,12 +49,22 @@ class Form extends Component {
                     <i onClick={this.addItem} className="fas fa-plus"></i>
 
                     <Transition
-                        items={this.state.error}
+                        items={this.state.errorInputOption}
                         from={{ transform: 'translate3d(0,-10px,0)', opacity: 0.25 }}
                         enter={{ transform: 'translate3d(0,0px,0)', opacity: 1 }}
-                        leave={{ }}>
+                        leave={{ transform: 'translate3d(0,-10px,0)', opacity: 0 }}>
                         {show => show && (props => 
-                            <div className="error" style={props}>{this.state.error}</div>
+                            <div className="error" style={props}>{"Please enter an option !"}</div>
+                        )}
+                    </Transition>
+
+                    <Transition
+                        items={this.state.errorButtonChoose}
+                        from={{ transform: 'translate3d(0,-10px,0)', opacity: 0.25 }}
+                        enter={{ transform: 'translate3d(0,0px,0)', opacity: 1 }}
+                        leave={{ transform: 'translate3d(0,-10px,0)', opacity: 0 }}>
+                        {show => show && (props => 
+                            <div className="error" style={props}>{"You have to add some options !"}</div>
                         )}
                     </Transition>
                     
