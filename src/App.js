@@ -5,25 +5,37 @@ import ListItems from './ListItems';
 class App extends Component {
 
   state = {
-    items: ['item 1', 'item 2']
+    lastId: 2,
+    items: [
+      {id: 0, text: "item 1"},
+      {id: 1, text: "item 2"},
+      {id: 2, text: "item 3"}
+    ]
   }
 
   //Add an item in the list of items
   addItem = (text) => {
-    this.setState({ items: [...this.state.items, text] })
+    const newId = this.state.lastId + 1
+    const newItem = {id: newId, text: text}
+    this.setState({ lastId:newId, items: [...this.state.items, newItem] })
   }
 
   //Remove an item
   removeItem = (id) => {
-    let newItems = this.state.items.slice()
-    newItems.splice(id, 1)
-    this.setState({ items: newItems })
+    this.setState((prevState) => ({
+			items: prevState.items.filter((item) => item.id !== id)
+		}))
   } 
 
   //Edit an item
   editItem = (text, id) => {
-    let newItems = this.state.items.slice()
-    newItems[id] = text
+    const newItems = this.state.items.slice()
+    for(let i = 0; i < newItems.length; i++) {
+      if(newItems[i].id === id) {
+        newItems[i].text = text
+        break
+      }
+    }
     this.setState({ items: newItems })
   }
 

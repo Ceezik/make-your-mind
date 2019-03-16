@@ -31,7 +31,7 @@ class Item extends Component {
 
     render() {
         return (
-            <li>
+            <li style={this.props.style}>
                 <span>
                     {this.state.edited ? <input type="text" className="inputItem" value={this.state.text} onChange={this.handleChange} /> : this.props.text}
                 </span> 

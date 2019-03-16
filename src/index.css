@@ -52,6 +52,7 @@ input[type="text"] {
   -moz-transition : all 0.3s ease;
   -o-transition : all 0.3s ease;
   -webkit-transition : all 0.3s ease;
+  
 }
 
 .inputOption:focus {
@@ -65,8 +66,13 @@ input:focus, button:focus {
 }
 
 .fa-plus {
-  position: relative;
-  right : 30px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  right : 18px;
   color : #949393;
   transition: color 0.3s ease;
   -moz-transition: color 0.3s ease;
@@ -78,8 +84,37 @@ input:focus, button:focus {
   color : #3498db;
 }
 
+.wrapper {
+  display: inline-block;
+  position: relative;
+}
+
 .error {
-  color: #e74c3c;
+  background-color: #e74c3c;
+  color: white;
+  font-size: 14px;
+  border-radius: 5px;
+  padding: 10px 5% 10px 5%;
+  position: absolute;
+  top : 60px;
+  z-index: 2;
+  width: 90%;
+}
+
+.error::before {
+  content: "";
+  border-left: 10px solid transparent;
+	border-right: 10px solid transparent;
+	border-bottom: 10px solid #e74c3c;
+  width: 0;
+  height: 0;
+  position: absolute;
+  top : -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  -moz-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  -webkit-transform: translateX(-50%);
 }
 
 
@@ -87,6 +122,7 @@ input:focus, button:focus {
 
 
 .choose {
+  margin-left: 15px; 
   padding: 15px 25px;
   border : none;
   color: white;
