@@ -100,7 +100,10 @@ class Form extends Component {
                     
                 </div>
                 
-                <ButtonChoose nbItems={this.props.nbItems} />
+                <ButtonChoose 
+                    nbItems={this.props.nbItems}
+                    chooseItem={this.props.chooseItem}
+                />
             </form>
         )
     }
