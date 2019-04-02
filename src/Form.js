@@ -15,11 +15,18 @@ class Form extends Component {
         this.setState({ text: event.target.value })
     }
 
+    handleMaxLength = (event) => {
+        if(event.target.value.length >= event.target.getAttribute('maxlength')) 
+            return false
+    }
+
     //Add an item
     addItem = () => {
         if(this.state.text.length > 0) {
-            this.props.addItem(this.state.text)
-            this.setState({text: "", errorInputOption: false})
+            if(this.props.editable) {
+                this.props.addItem(this.state.text)
+                this.setState({text: "", errorInputOption: false})
+            }
         }
         else {
             setTimeout(() => this.setState({ errorInputOption: false }), 3500)
@@ -32,7 +39,6 @@ class Form extends Component {
         event.preventDefault()
         if(this.props.nbItems > 1) {
             this.setState({ error: "" })
-            //TODO : Choose randomly an item
         }
         else {
             this.setState({ errorButtonChoose: true, errorInputOption: false })
@@ -45,7 +51,7 @@ class Form extends Component {
         return (
             <form onSubmit={this.handleChooseItem}>
                 <div className="wrapper">
-                    <input type="text" className="inputOption" placeholder="Enter an option" value={this.state.text} onChange={this.handleInputChanged} />
+                    <input type="text" className="inputOption" placeholder="Enter an option" value={this.state.text} onChange={this.handleInputChanged} maxLength="30" onKeyPress={this.handleMaxLength} />
                     <i onClick={this.addItem} className="fas fa-plus"></i>
 
                     <FlipMove 
@@ -110,17 +116,3 @@ class Form extends Component {
 }
 
 export default Form;
-
-/*
-
-<Transition
-                        items={this.state.errorInputOption}
-                        from={{ transform: 'translate3d(0,-10px,0)', opacity: 0.25 }}
-                        enter={{ transform: 'translate3d(0,0px,0)', opacity: 1 }}
-                        leave={{ transform: 'translate3d(0,-10px,0)', opacity: 0 }}>
-                        {show => show && (props => 
-                            <div className="error" style={props}>{"Please enter an option !"}</div>
-                        )}
-                    </Transition>
-*/
-

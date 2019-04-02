@@ -2,36 +2,43 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Montserrat', sans-serif;
+  background-color: #f7f7f7;
+  text-align: center;
 }
 
 i:hover {
   cursor: pointer;
 }
 
-/*Title*/
 
-.container {
-  min-height: 100vh;
-  background-color: #f7f7f7;
-  text-align: center;
-}
+/*Title*/
 
 .container h1 {
   color: #383838;
   font-weight: 700;
   font-size: 40px;
   margin: 0;
+  padding: 0 30px 0 30px;
 }
 
 .container legend {
   font-style: italic;
   margin: 0;
+  padding: 0 30px 0 30px;
 }
 
 /*Form*/
 
 form {
-  margin-top: 4vh;
+  margin-top: 2rem;
+}
+
+.wrapper {
+  display: inline-block;
+}
+
+.inline-block {
+  display: inline-block;
 }
 
 input[type="text"] {
@@ -54,7 +61,6 @@ input[type="text"] {
   -webkit-transition : all 0.3s ease;
   position: relative;
   z-index: 3;
-  
 }
 
 .inputOption:focus {
@@ -184,7 +190,7 @@ li {
   list-style: none;
   background-color: white;
   font-size: 16px;
-  width : 30%;
+  width : 40%;
   height: 25px;
   padding: 10px 20px;
   margin-top: 10px;
@@ -225,7 +231,7 @@ li {
 
 .fa-save, .fa-pen {
   color: #3498db;
-  margin-right: 15px;
+  margin: 15px;
   transition: all 0.3s ease;
 }
 
@@ -235,8 +241,48 @@ li {
 
 .inputItem {
   border: none;
-  border-left : 3px solid #3498db;
-  padding-left: 20px;
   font-size: 16px;
+  border-bottom: 1px solid #3498db;
 }
 
+
+/* Media Queries */
+
+@media screen and (max-width: 768px) {
+  li {
+    width : 60%;
+  }
+
+  .container h1 {
+    font-size: 30px;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  li {
+    width : 80%;
+  }
+
+  .active {
+    transform: scale(1.05);
+    -ms-transform: scale(1.05);
+    -moz-transform: scale(1.05);
+    -o-transform: scale(1.05);
+    -webkit-transform: scale(1.05);
+  }
+
+  .choose {
+    margin-left: 0;
+    margin-top : 10px;
+  }
+
+  .wrapper {
+    display: block;
+    width: 210px;
+    margin: 0 auto;
+  }
+
+  .inline-block {
+    display: block;
+  }
+}

@@ -5,13 +5,8 @@ import ListItems from './ListItems';
 class App extends Component {
 
   state = {
-    lastId: 3,
-    items: [
-      {id: 0, text: "item 1"},
-      {id: 1, text: "item 2"},
-      {id: 2, text: "item 3"},
-      {id: 3, text: "item 4"},
-    ],
+    lastId: 0,
+    items: [],
     editable: true
   }
 
@@ -91,6 +86,7 @@ class App extends Component {
           addItem={this.addItem} 
           nbItems={this.state.items.length}
           chooseItem={this.chooseItem}
+          editable={this.state.editable}
         />
         
 
